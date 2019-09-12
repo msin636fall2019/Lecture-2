@@ -1,0 +1,71 @@
+<div class="text-center mb-5 shadow">
+    <div class="card">
+        <div class="card-body">
+            <button class="btn btn-danger btn-lg m-2 " [disabled]="showFailedStudents" (click)="showFailed()">
+              Show Failed Studenst
+      </button>
+            <button class="btn btn-info btn-lg m-2" [disabled]="showAll" (click)="showAllStudents()">
+             Show All Students
+      </button>
+            <button class="btn btn-primary btn-lg m-2" (click)="showStudentDetails()">{{detailsBtnName}}</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="row" *ngIf="showFailedStudents">
+    <div class=" col-12 col-lg-4" *ngFor="let student of failedStudents">
+        <div class="card m-2 shadow">
+            <div class="card-header text-center text-light" [ngClass]="{'bg-danger': student.totalScore<60,
+                                'bg-success': student.totalScore>80,
+                                'bg-warning':student.totalScore<80 }">
+                <h4> {{student.name}} </h4>
+            </div>
+            <div class="card-body" *ngIf="showDetails">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> <strong>Midterm Score</strong>: {{student.midtermScore}}</li>
+                    <li class="list-group-item"><strong>Final Score</strong>: {{student.finalScore}}</li>
+                    <li class="list-group-item"><strong>Assigments Score</strong>: {{student.assigmentScore}}</li>
+                    <li class="list-group-item"><strong>Assigments Score</strong>: {{student.projectScore}}</li>
+                    <li class="list-group-item"><strong>Project Name</strong>: {{student.projectName}}</li>
+                    <li class="list-group-item"><strong>Project Discription</strong>: {{student.projectDisc}}</li>
+                </ul>
+            </div>
+            <div class="card-footer text-center">
+                <strong> Total Grade</strong>: {{student.totalScore}}
+                <strong>{{student.totalGrade}}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="showAll">
+    <div class=" col-12 col-lg-4" *ngFor="let student of students">
+        <div class="card m-2 shadow">
+            <div class="card-header text-center text-light" [ngClass]="{'bg-danger': student.totalScore<60,
+                                'bg-success': student.totalScore>80,
+                                'bg-warning':student.totalScore<80 }">
+                <h4> {{student.name}} </h4>
+            </div>
+            <div class="card-body" *ngIf="showDetails">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> <strong>Midterm Score</strong>: {{student.midtermScore}}</li>
+                    <li class="list-group-item"><strong>Final Score</strong>: {{student.finalScore}}</li>
+                    <li class="list-group-item"><strong>Assigments Score</strong>: {{student.assigmentScore}}</li>
+                    <li class="list-group-item"><strong>Assigments Score</strong>: {{student.projectScore}}</li>
+
+                    <li class="list-group-item"><strong>Project Name</strong>: {{student.projectName}}</li>
+                    <li class="list-group-item"><strong>Project Discription</strong>: {{student.projectDisc}}</li>
+                </ul>
+            </div>
+
+            <div class="card-footer text-center">
+                <strong> Total Grade</strong>: {{student.totalScore}}
+                <strong>{{student.totalGrade}}</strong>
+            </div>
+        </div>
+    </div>
+</div>
