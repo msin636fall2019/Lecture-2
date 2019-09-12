@@ -1,0 +1,9 @@
+<!-- app/examples/event-binding.component.ts -->
+<div style="text-align:center">
+  <h1>{{ title }}</h1>
+  <input type="text" (input)="getInput($event)" />
+  <button (click)="showClickEvent($event)">Show Click Event</button>
+  <button (click)="changeTitle()">Change Title</button>
+</div>
+<br>
+<p> {{inputValue}}</p>
